@@ -7,17 +7,7 @@ const fs = require('fs').promises;
 
 describe("modifyFile test script", function(){
     
-    // beforeAll(function() {
-
-    //     // I want to mock a particular file structure
-    //     mock({
-    //         'folderName': {
-    //             'index.md' : '# Hello World!',
-    //         },
-    //     });
-    // });
-
-    it("should replace hello with goodbye", async function(){
+    this.beforeAll(function() {
 
         // I want to mock a particular file structure
         mock({
@@ -25,6 +15,17 @@ describe("modifyFile test script", function(){
                 'index.md' : '# Hello World!',
             },
         });
+    });
+    
+
+    it("should replace hello with goodbye", async function(){
+
+        // I want to mock a particular file structure
+        // mock({
+        //     'folderName': {
+        //         'index.md' : '# Hello World!',
+        //     },
+        // });
 
         // in the before all hook, the file has been created
         // let's call test the original function
@@ -42,13 +43,13 @@ describe("modifyFile test script", function(){
         console.log("Logging content: ", content);
         
         expect(content).to.equal("# Goodbye World!");
-        mock.restore();
+        // mock.restore();
     })
 
 
 
 
-    // afterAll(function(){
-    //     mock.restore();
-    // })
+    this.afterAll(function(){
+        mock.restore();
+    })
 })
