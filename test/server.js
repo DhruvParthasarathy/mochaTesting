@@ -5,6 +5,7 @@
 var expect = require("chai").expect; // chai is the library that has the test functions
 var request = require("request");
 
+
 // the functionality that we want to test 
 // describing it with mocha
 
@@ -16,14 +17,15 @@ describe("Color Code Converter API", function(){
         // in this variable
 
         // the function runs at this end point, so we need to start an express server to serve this resource
-        var url = "https://localhost:3000/rgbToHex?red=255&green=255&blue=255";
+        var url = "http://localhost:3000/rgbToHex?red=255&green=255&blue=255";
 
         /**
          * To make a request, we will use the Request package. We need to pass two arguments to it: a URL to visit, and a function to be invoked when the request is completed. We will set up our expectations inside those callback functions.
          */
 
-        it("returns status 200", function(){
+        it("rgbToHex fn returns status 200", function(done){
             request(url, function(error, response, body){
+                console.log(url, response.statusCode)
                expect(response.statusCode).to.equal(200); 
 
                /**
@@ -32,7 +34,7 @@ describe("Color Code Converter API", function(){
                done();
             })
         });
-        it("returns the color in hex", function(){
+        it("rgbToHex returns the color in hex", function(done){
             request(url, function(error, response, body){
                 expect(body).to.equal("ffffff"); 
                 done();
@@ -42,18 +44,18 @@ describe("Color Code Converter API", function(){
 
     describe("Hex to RGB conversion", function(){
 
-        var url = "https://localhost:3000/hexToRgb?hex=00ff00";
+        var url = "http://localhost:3000/hexToRgb?hex=00ff00";
 
-        it("returns status 200", function(){
+        it("hex to rgb returns status 200", function(done){
             request(url, function(error, response, body){
                 expect(response.statusCode).to.equal(200);
                 done(); 
              })
         });
 
-        it("returns the color in RGB", function(){
+        it("hex to rgb returns the color in RGB", function(done){
             request(url, function(error, response, body){
-                expect(body).to.equal("[0,255,0"); 
+                expect(body).to.equal("[0,255,0]"); 
                 done();
              })
         });

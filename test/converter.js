@@ -14,7 +14,7 @@ describe("Color Code Converter", function(){
     // Here we are going to describe this function in better detail
 
     describe("RGB to Hex Conversion", function(){
-        it("converts the basic colors", function(){
+        it("converts the basic colors fro rgb to hex", function(){
             // we need to check if it converts the basic colors
             var redHex = converter.rgbToHex(255, 0, 0);
             var blueHex = converter.rgbToHex(0, 255, 0);
@@ -31,18 +31,19 @@ describe("Color Code Converter", function(){
     describe("Hex to RGB conversion", function(){
 
         // the test here
-        it("converts basic colors", function(){
+        it("converts basic colors from hex to rgb", function(){
             // here we pass in hex colors and check if we get back rgb
 
             var red = converter.hexToRgb("ff0000")
-            var blue = converter.hexToRgb("0000ff")
             var green = converter.hexToRgb("00ff00")
+            var blue = converter.hexToRgb("0000ff")
+            
 
             // here we use deep equal because we are going to match
             // the arrays elementwise
             expect(red).to.deep.equal([255, 0, 0]);
-            expect(blue).to.deep.equal([0, 255, 0]);
-            expect(green).to.deep.equal([0, 0, 255]);
+            expect(green).to.deep.equal([0, 255, 0]);
+            expect(blue).to.deep.equal([0, 0, 255]);
 
         });
     });

@@ -24,5 +24,5 @@ exports.hexToRgb = function(hex){
     var green = parseInt(hex.substring(2,4), 16);
     var blue = parseInt(hex.substring(4,6), 16);
 
-    return [red, blue, green];
+    return [red, green, blue];
 }
